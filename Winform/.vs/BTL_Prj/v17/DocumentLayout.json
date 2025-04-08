@@ -1,0 +1,223 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\.hoc\\Nam3\\K5\\LapTrinhTrucQuan\\BTL\\BTL_Prj\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A81F5006-7CC8-46E1-B80A-36637B8C7140}|BTL_Prj.csproj|e:\\.hoc\\nam3\\k5\\laptrinhtrucquan\\btl\\btl_prj\\frm\\danhmuchanghoa\\form_danhmuc-hanghoa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A81F5006-7CC8-46E1-B80A-36637B8C7140}|BTL_Prj.csproj|solutionrelative:frm\\danhmuchanghoa\\form_danhmuc-hanghoa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A81F5006-7CC8-46E1-B80A-36637B8C7140}|BTL_Prj.csproj|E:\\.hoc\\Nam3\\K5\\LapTrinhTrucQuan\\BTL\\BTL_Prj\\frm\\main\\form_main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A81F5006-7CC8-46E1-B80A-36637B8C7140}|BTL_Prj.csproj|solutionrelative:frm\\main\\form_main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A81F5006-7CC8-46E1-B80A-36637B8C7140}|BTL_Prj.csproj|e:\\.hoc\\nam3\\k5\\laptrinhtrucquan\\btl\\btl_prj\\frm\\login\\form_login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A81F5006-7CC8-46E1-B80A-36637B8C7140}|BTL_Prj.csproj|solutionrelative:frm\\login\\form_login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A81F5006-7CC8-46E1-B80A-36637B8C7140}|BTL_Prj.csproj|E:\\.hoc\\Nam3\\K5\\LapTrinhTrucQuan\\BTL\\BTL_Prj\\frm\\danhmuchanghoa\\createeditform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A81F5006-7CC8-46E1-B80A-36637B8C7140}|BTL_Prj.csproj|solutionrelative:frm\\danhmuchanghoa\\createeditform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A81F5006-7CC8-46E1-B80A-36637B8C7140}|BTL_Prj.csproj|e:\\.hoc\\nam3\\k5\\laptrinhtrucquan\\btl\\btl_prj\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A81F5006-7CC8-46E1-B80A-36637B8C7140}|BTL_Prj.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A81F5006-7CC8-46E1-B80A-36637B8C7140}|BTL_Prj.csproj|E:\\.hoc\\Nam3\\K5\\LapTrinhTrucQuan\\BTL\\BTL_Prj\\frm\\nhanvien\\form_nhanvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A81F5006-7CC8-46E1-B80A-36637B8C7140}|BTL_Prj.csproj|solutionrelative:frm\\nhanvien\\form_nhanvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A81F5006-7CC8-46E1-B80A-36637B8C7140}|BTL_Prj.csproj|e:\\.hoc\\nam3\\k5\\laptrinhtrucquan\\btl\\btl_prj\\frm\\nhanvien\\form_taotaikhoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A81F5006-7CC8-46E1-B80A-36637B8C7140}|BTL_Prj.csproj|solutionrelative:frm\\nhanvien\\form_taotaikhoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 10,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form_DanhMuc-HangHoa.cs",
+              "DocumentMoniker": "E:\\.hoc\\Nam3\\K5\\LapTrinhTrucQuan\\BTL\\BTL_Prj\\Frm\\DanhMucHangHoa\\Form_DanhMuc-HangHoa.cs",
+              "RelativeDocumentMoniker": "Frm\\DanhMucHangHoa\\Form_DanhMuc-HangHoa.cs",
+              "ToolTip": "E:\\.hoc\\Nam3\\K5\\LapTrinhTrucQuan\\BTL\\BTL_Prj\\Frm\\DanhMucHangHoa\\Form_DanhMuc-HangHoa.cs",
+              "RelativeToolTip": "Frm\\DanhMucHangHoa\\Form_DanhMuc-HangHoa.cs",
+              "ViewState": "AQIAAN8AAAAAAAAAAAAqwPkAAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T20:47:16.466Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form_Login.cs",
+              "DocumentMoniker": "E:\\.hoc\\Nam3\\K5\\LapTrinhTrucQuan\\BTL\\BTL_Prj\\Frm\\Login\\Form_Login.cs",
+              "RelativeDocumentMoniker": "Frm\\Login\\Form_Login.cs",
+              "ToolTip": "E:\\.hoc\\Nam3\\K5\\LapTrinhTrucQuan\\BTL\\BTL_Prj\\Frm\\Login\\Form_Login.cs",
+              "RelativeToolTip": "Frm\\Login\\Form_Login.cs",
+              "ViewState": "AQIAAEMAAAAAAAAAAAAiwFgAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T20:14:00.046Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\.hoc\\Nam3\\K5\\LapTrinhTrucQuan\\BTL\\BTL_Prj\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "E:\\.hoc\\Nam3\\K5\\LapTrinhTrucQuan\\BTL\\BTL_Prj\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAwwBcAAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T19:02:26.453Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form_Main.cs",
+              "DocumentMoniker": "E:\\.hoc\\Nam3\\K5\\LapTrinhTrucQuan\\BTL\\BTL_Prj\\Frm\\Main\\Form_Main.cs",
+              "RelativeDocumentMoniker": "Frm\\Main\\Form_Main.cs",
+              "ToolTip": "E:\\.hoc\\Nam3\\K5\\LapTrinhTrucQuan\\BTL\\BTL_Prj\\Frm\\Main\\Form_Main.cs",
+              "RelativeToolTip": "Frm\\Main\\Form_Main.cs",
+              "ViewState": "AQIAAJ4AAAAAAAAAAAAiwKcAAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-23T16:56:51.858Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Form_NhanVien.cs",
+              "DocumentMoniker": "E:\\.hoc\\Nam3\\K5\\LapTrinhTrucQuan\\BTL\\BTL_Prj\\Frm\\NhanVien\\Form_NhanVien.cs",
+              "RelativeDocumentMoniker": "Frm\\NhanVien\\Form_NhanVien.cs",
+              "ToolTip": "E:\\.hoc\\Nam3\\K5\\LapTrinhTrucQuan\\BTL\\BTL_Prj\\Frm\\NhanVien\\Form_NhanVien.cs",
+              "RelativeToolTip": "Frm\\NhanVien\\Form_NhanVien.cs",
+              "ViewState": "AQIAAGcAAAAAAAAAAAAmwHEAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-23T16:53:55.012Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CreateEditForm.cs",
+              "DocumentMoniker": "E:\\.hoc\\Nam3\\K5\\LapTrinhTrucQuan\\BTL\\BTL_Prj\\Frm\\DanhMucHangHoa\\CreateEditForm.cs",
+              "RelativeDocumentMoniker": "Frm\\DanhMucHangHoa\\CreateEditForm.cs",
+              "ToolTip": "E:\\.hoc\\Nam3\\K5\\LapTrinhTrucQuan\\BTL\\BTL_Prj\\Frm\\DanhMucHangHoa\\CreateEditForm.cs",
+              "RelativeToolTip": "Frm\\DanhMucHangHoa\\CreateEditForm.cs",
+              "ViewState": "AQIAAFYAAAAAAAAAAAAIwGcAAAA7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-23T16:35:00.941Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Form_TaoTaiKhoan.cs",
+              "DocumentMoniker": "E:\\.hoc\\Nam3\\K5\\LapTrinhTrucQuan\\BTL\\BTL_Prj\\Frm\\NhanVien\\Form_TaoTaiKhoan.cs",
+              "RelativeDocumentMoniker": "Frm\\NhanVien\\Form_TaoTaiKhoan.cs",
+              "ToolTip": "E:\\.hoc\\Nam3\\K5\\LapTrinhTrucQuan\\BTL\\BTL_Prj\\Frm\\NhanVien\\Form_TaoTaiKhoan.cs",
+              "RelativeToolTip": "Frm\\NhanVien\\Form_TaoTaiKhoan.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAqwBkAAAA4AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-23T16:55:08.648Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedHeight": 2,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{4a9b7e51-aa16-11d0-a8c5-00a0c921a4d2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{588470cc-84f8-4a57-9ac4-86bca0625ff4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{007a3a6b-b5b2-454d-a2bd-cf929f989be2}"
+            }
+          ]
+        },
+        {
+          "DockedHeight": 2,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            }
+          ]
+        },
+        {
+          "DockedHeight": 717,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            }
+          ]
+        },
+        {
+          "DockedHeight": 191,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{a80febb4-e7e0-4147-b476-21aaf2453969}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
