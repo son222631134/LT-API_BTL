@@ -4,6 +4,14 @@ from contextlib import nullcontext
 
 import flask
 import pyodbc
+from flask_cors import CORS, cross_origin
+
+app = flask.Flask(__name__)
+
+
+cors = CORS(app)
+
+
 
 
 project_directory = os.path.dirname(os.getcwd())
@@ -64,6 +72,28 @@ def updateLastLogin(username):
     except Exception as e:
         print('Update Last login: ',e)
 
+@app.route('/Login/LastLogin', methods = ['GET'])
+def getLastLogin():
+    try:
+        username = flask.request.json.get('username')
+        cursor = conn.cursor()
+        cursor.execute(
+                "SELECT TOP 1 * FROM Account ORDER BY LastLogin DESC"
+        )
+        results = []
+        keys = []
+        for i in cursor.description:
+            keys.append(i[0])
+        for val in cursor.fetchall():
+            results.append(dict(zip(keys, val)))
+        resp = flask.jsonify(results)
+        resp.access_control_allow_origin = '*'
+        resp.status_code = 200
+
+        return resp
+    except Exception as e:
+        print('Get Last login: ',e)
+
 
 @app.route('/Logout', methods = ['PUT'])
 def Logout():
@@ -96,29 +126,12 @@ def getall(tbl, condition):
         for val in cursor.fetchall():
             results.append(dict(zip(keys, val)))
         resp = flask.jsonify(results)
+        resp.access_control_allow_origin = '*'
         resp.status_code = 200
 
         return resp
     except Exception as e:
         print("Error Getall" + tbl + ": ",e)
-#todo
-def add(tbl, data):
-    try:
-        cursor = conn.cursor()
-        sql = "INSERT INTO " + tbl + " VALUES "
-        sql += "("
-        for i in range(len(data)-1):
-            sql += "?,"
-        sql += "?)"
-        print(sql)
-        print(data)
-        cursor.execute(sql, data)
-        conn.commit()
-        resp = flask.jsonify({"mess": "Thêm thành công"})
-        resp.status_code = 200
-        return resp
-    except Exception as e:
-        print("Error add " + tbl + ": ",e)
 
 def delete(tbl, val):
     try:
@@ -147,6 +160,27 @@ def delete(tbl, val):
 def getAllHangHoa():
     return getall('DMHangHoa', '')
 
+@app.route('/HangHoa/find', methods = ['GET'])
+def findHangHoa():
+    try:
+        str = flask.request.args.get("s")
+        cursor = conn.cursor()
+        cursor.execute(
+            "SELECT * FROM DMHangHoa WHERE TenHang = ?", str
+        )
+        results = []
+        keys = []
+        for i in cursor.description:
+            keys.append(i[0])
+        for val in cursor.fetchall():
+            results.append(dict(zip(keys, val)))
+        resp = flask.jsonify(results)
+        resp.access_control_allow_origin = '*'
+        resp.status_code = 200
+
+        return resp
+    except Exception as e:
+        print('Find Hang Hoa: ',e)
 @app.route('/HangHoa/add', methods = ['POST'])
 def addHangHoa():
     try:
@@ -212,7 +246,7 @@ def modifyHangHoa():
         data =  (tenHang, soLuong, donGiaNhap, donGiaBan, maDonVi, maNoiSX, maCongDung, maMau, maDacDiem, newImagePath, maHang)
         cursor.execute(sql, data)
         conn.commit()
-        resp = flask.jsonify({"mess": "Thêm thành công"})
+        resp = flask.jsonify({"mess": "Sửa thành công"})
         resp.status_code = 200
         return resp
     except Exception as e:
@@ -244,6 +278,28 @@ def deleteHangHoa():
 def getAllHoaDonBan():
     return getall('HoaDonBan','')
 
+@app.route('/HoaDonBan/find', methods = ['GET'])
+def findHoaDonBan():
+    try:
+        s = flask.request.args.get("s")
+        cursor = conn.cursor()
+        sql = ("SELECT * FROM HoaDonBan WHERE SoHDB = ? or MaNV = ? or MaKhach = ?")
+        data = (s,s,s)
+        cursor.execute(sql, data)
+        results = []
+        keys = []
+        for i in cursor.description:
+            keys.append(i[0])
+        for val in cursor.fetchall():
+            results.append(dict(zip(keys, val)))
+        resp = flask.jsonify(results)
+        resp.access_control_allow_origin = '*'
+        resp.status_code = 200
+
+        return resp
+    except Exception as e:
+        print('Find Hoa Don Ban: ',e)
+
 @app.route('/HoaDonBan/add', methods = ['POST'])
 def addHoaDonBan():
     try:
@@ -260,6 +316,7 @@ def addHoaDonBan():
         cursor.execute(sql, data)
         conn.commit()
         resp = flask.jsonify({"mess": "Thêm thành công"})
+        resp.access_control_allow_origin = 'localhost:5000'
         resp.status_code = 200
         return resp
     except Exception as e:
@@ -281,7 +338,7 @@ def modifyHoaDonBan():
         data =  (maNV, maKhach, ngayBan, tongTien, soHDB)
         cursor.execute(sql, data)
         conn.commit()
-        resp = flask.jsonify({"mess": "Thêm thành công"})
+        resp = flask.jsonify({"mess": "Sửa thành công"})
         resp.status_code = 200
         return resp
     except Exception as e:
@@ -300,6 +357,28 @@ def deleteHoaDonBan():
 def getAllCTHoaDonBan():
     soHDB = str( flask.request.json.get("SoHDB") )
     return getall('ChiTietHoaDonBan', ' WHERE SoHDB = ' + soHDB)
+
+@app.route('/HoaDonBan/ChiTiet/find', methods = ['GET'])
+def findCTHoaDonBan():
+    try:
+        s = str( flask.request.args.get("s") )
+        cursor = conn.cursor()
+        sql = ("SELECT * FROM ChiTietHoaDonBan WHERE SoHDB = ? or MaHang = ?")
+        data = (s,s)
+        cursor.execute(sql, data)
+        results = []
+        keys = []
+        for i in cursor.description:
+            keys.append(i[0])
+        for val in cursor.fetchall():
+            results.append(dict(zip(keys, val)))
+        resp = flask.jsonify(results)
+        resp.access_control_allow_origin = '*'
+        resp.status_code = 200
+
+        return resp
+    except Exception as e:
+        print('Find Chi Tiet Hoa Don Ban: ',e)
 
 @app.route('/HoaDonBan/ChiTiet/add', methods = ['POST'])
 def addCTHoaDonBan():
@@ -338,7 +417,7 @@ def modifyCTHoaDonBan():
         data =  (soLuong, giamGia, thanhTien, soHDB, maHang)
         cursor.execute(sql, data)
         conn.commit()
-        resp = flask.jsonify({"mess": "Thêm thành công"})
+        resp = flask.jsonify({"mess": "Sửa thành công"})
         resp.status_code = 200
         return resp
     except Exception as e:
@@ -358,6 +437,28 @@ def deleteCTHoaDonBan():
 @app.route('/HoaDonNhap/getall', methods = ['GET'])
 def getAllHoaDonNhap():
     return getall('HoaDonNhap','')
+
+@app.route('/HoaDonNhap/find', methods = ['GET'])
+def findHoaDonNhap():
+    try:
+        s = str( flask.request.args.get("s") )
+        cursor = conn.cursor()
+        sql = ("SELECT * FROM HoaDonNhap WHERE SoHDN = ? or MaNV = ? or MaNCC = ?")
+        data = (s,s,s)
+        cursor.execute(sql, data)
+        results = []
+        keys = []
+        for i in cursor.description:
+            keys.append(i[0])
+        for val in cursor.fetchall():
+            results.append(dict(zip(keys, val)))
+        resp = flask.jsonify(results)
+        resp.access_control_allow_origin = '*'
+        resp.status_code = 200
+
+        return resp
+    except Exception as e:
+        print('Find Hoa Don Nhap: ',e)
 
 @app.route('/HoaDonNhap/add', methods = ['POST'])
 def addHoaDonNhap():
@@ -396,7 +497,7 @@ def modifyHoaDonNhap():
         data =  (maNV, maNCC, ngayNhap, tongTien, soHDN)
         cursor.execute(sql, data)
         conn.commit()
-        resp = flask.jsonify({"mess": "Thêm thành công"})
+        resp = flask.jsonify({"mess": "Sửa thành công"})
         resp.status_code = 200
         return resp
     except Exception as e:
@@ -415,6 +516,28 @@ def deleteHoaDonNhap():
 def getAllCTHoaDonNhap():
     soHDB = str( flask.request.json.get("SoHDN") )
     return getall('ChiTietHoaDonNhap', ' WHERE SoHDN = ' + soHDB)
+
+@app.route('/HoaDonNhap/ChiTiet/find', methods = ['GET'])
+def findCTHoaDonNhap():
+    try:
+        s = str( flask.request.args.get("s") )
+        cursor = conn.cursor()
+        sql = ("SELECT * FROM ChiTietHoaDonNhap WHERE SoHDN = ? or MaHang = ?")
+        data = (s,s)
+        cursor.execute(sql, data)
+        results = []
+        keys = []
+        for i in cursor.description:
+            keys.append(i[0])
+        for val in cursor.fetchall():
+            results.append(dict(zip(keys, val)))
+        resp = flask.jsonify(results)
+        resp.access_control_allow_origin = '*'
+        resp.status_code = 200
+
+        return resp
+    except Exception as e:
+        print('Find Chi Tiet Hoa Don Nhap: ',e)
 
 @app.route('/HoaDonNhap/ChiTiet/add', methods = ['POST'])
 def addCTHoaDonNhap():
@@ -455,7 +578,7 @@ def modifyCTHoaDonNhap():
         data =  (soLuong, donGia, giamGia, thanhTien, soHDN, maHang)
         cursor.execute(sql, data)
         conn.commit()
-        resp = flask.jsonify({"mess": "Thêm thành công"})
+        resp = flask.jsonify({"mess": "Sửa thành công"})
         resp.status_code = 200
         return resp
     except Exception as e:
@@ -472,88 +595,171 @@ def deleteCTHoaDonNhap():
     return delete('ChiTietHoaDonNhap', val)
 
 
+#Khach Hang
+@app.route('/KhachHang/getall', methods = ['GET'])
+def getAllKhachHang():
+    return getall('KhachHang','')
 
+@app.route('/KhachHang/find', methods = ['GET'])
+def findKhachHang():
+    try:
+        s = str( flask.request.args.get("s") )
+        cursor = conn.cursor()
+        sql = ("SELECT * FROM KhachHang "
+               "WHERE MaKhach LIKE '%" + s + "' or MaKhach LIKE '" + s + "%' "
+               "or TenKhach LIKE N'%" + s + "%' "
+               )
+        cursor.execute(sql)
+        results = []
+        keys = []
+        for i in cursor.description:
+            keys.append(i[0])
+        for val in cursor.fetchall():
+            results.append(dict(zip(keys, val)))
+        resp = flask.jsonify(results)
+        resp.access_control_allow_origin = '*'
+        resp.status_code = 200
 
-#----------------------------------------------
-#API GET: Lấy thông tin toàn bộ khách hàngđe
+        return resp
+    except Exception as e:
+        print('Find Khach Hang: ',e)
 
-# @app.route('/SanPham/getall', methods = ['GET'])
-# def getAllSanPham():
-#     try:
-#         cursor = conn.cursor()
-#         cursor.execute("select *from tblSanPham")
-#         results = []
-#         keys = []
-#         for i in cursor.description:
-#             keys.append(i[0])
-#         for val in cursor.fetchall():
-#             results.append(dict(zip(keys, val)))
-#         resp = flask.jsonify(results)
-#         resp.status_code = 200
-#         return resp
-#     except Exception as e:
-#         print(e)
+@app.route('/KhachHang/add', methods = ['POST'])
+def addKhachHang():
+    try:
+        maKhach = str( flask.request.json.get("MaKhach") )
+        tenKhach = str( flask.request.json.get("TenKhach") )
+        diaChi = str( flask.request.json.get("DiaChi") )
+        dienThoai = str( flask.request.json.get("DienThoai") )
 
+        cursor = conn.cursor()
+        sql = ("INSERT INTO KhachHang "
+               "(MaKhach, TenKhach, DiaChi, DienThoai) VALUES (?,?,?,?)")
+        data =  (maKhach, tenKhach, diaChi, dienThoai)
+        cursor.execute(sql, data)
+        conn.commit()
+        resp = flask.jsonify({"mess": "Thêm thành công"})
+        resp.status_code = 200
+        return resp
+    except Exception as e:
+        print('addKhachHang: ', e)
 
+@app.route('/KhachHang/modify', methods = ['PUT'])
+def modifyKhachHang():
+    try:
+        maKhach = str( flask.request.json.get("MaKhach") )
+        tenKhach = str( flask.request.json.get("TenKhach") )
+        diaChi = str( flask.request.json.get("DiaChi") )
+        dienThoai = str( flask.request.json.get("DienThoai") )
 
-# @app.route('/SanPham/find/<TenSP>/<TenCL>', methods = ['GET'])
-# def findSanPham(TenSP,TenCL):
-#     try:
-#         cursor = conn.cursor()
-#         cursor.execute("select tblSanPham.* from tblSanPham"
-#                        " join tblChatLieu on tblSanPham.ChatLieu = tblChatLieu.MaCL"
-#                        " where tblSanPham.TenSP LIKE ? AND tblChatLieu.TenCL LIKE ?",TenSP, TenCL)
-#         results = []
-#         keys = []
-#         for i in cursor.description:
-#             keys.append(i[0])
-#         for val in cursor.fetchall():
-#             results.append(dict(zip(keys, val)))
-#         resp = flask.jsonify(results)
-#         resp.status_code = 200
-#         return resp
-#     except Exception as e:
-#         print(e)
+        cursor = conn.cursor()
+        sql = ("UPDATE KhachHang SET "
+               "TenKhach = ?, DiaChi = ?, DienThoai = ? "
+               "WHERE MaKhach = ?")
+        data =  (tenKhach, diaChi, dienThoai, maKhach)
+        cursor.execute(sql, data)
+        conn.commit()
+        resp = flask.jsonify({"mess": "Sửa thành công"})
+        resp.status_code = 200
+        return resp
+    except Exception as e:
+        print('modifyKhachHang: ', e)
 
-# @app.route('/SanPham/tonKho', methods = ['GET'])
-# def findTonKho():
-#     try:
-#         cursor = conn.cursor()
-#         cursor.execute("select tblSanPham.* from tblSanPham"
-#                        " where SoLuong>0")
-#         results = []
-#         keys = []
-#         for i in cursor.description:
-#             keys.append(i[0])
-#         for val in cursor.fetchall():
-#             results.append(dict(zip(keys, val)))
-#         resp = flask.jsonify(results)
-#         resp.status_code = 200
-#         return resp
-#     except Exception as e:
-#         print(e)
+@app.route('/KhachHang/delete', methods = ['DELETE'])
+def deleteKhachHang():
+    maKhach = str(flask.request.json.get('MaKhach'))
+    val = {
+        'maKhach': maKhach
+    }
+    return delete('KhachHang', val)
 
+#Nhan Vien
+@app.route('/NhanVien/getall', methods = ['GET'])
+def getAllNhanVien():
+    return getall('NhanVien','')
 
+@app.route('/NhanVien/find', methods = ['GET'])
+def findNhanVien():
+    try:
+        s = str( flask.request.args.get("s") )
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM NhanVien "
+                       "WHERE MaNV LIKE '%" + s + "' or MaNV LIKE '" + s + "%' "
+                       "or TenNV LIKE N'%" + s + "%' "
+                       )
+        results = []
+        keys = []
+        for i in cursor.description:
+            keys.append(i[0])
+        for val in cursor.fetchall():
+            results.append(dict(zip(keys, val)))
+        resp = flask.jsonify(results)
+        resp.access_control_allow_origin = '*'
+        resp.status_code = 200
 
-# @app.route('/SanPham/add', methods = ['POST'])
-# def add():
-#     try:
-#         maSP = flask.request.json.get("MaSP")
-#         tenSP = flask.request.json.get("TenSP")
-#         cursor = conn.cursor()
-#         sql = "insert into tblSanPham(MaSP,TenSP) values( ?, ?)"
-#         data = (maSP, tenSP)
-#         cursor.execute(sql, data)
-#         conn.commit()
-#         resp = flask.jsonify({"mess": "thành công"})
-#         resp.status_code = 200
-#         return resp
-#     except Exception as e:
-#         print(e)
+        return resp
+    except Exception as e:
+        print('Find Nhan Vien: ',e)
+
+@app.route('/NhanVien/add', methods = ['POST'])
+def addNhanVien():
+    try:
+        maNV = str( flask.request.json.get("MaNV") )
+        tenNV = str( flask.request.json.get("TenNV") )
+        gioiTinh = str( flask.request.json.get("GioiTinh") )
+        ngaySinh = str( flask.request.json.get("NgaySinh") )
+        dienThoai = str( flask.request.json.get("DienThoai") )
+        diaChi = str( flask.request.json.get("DiaChi") )
+        maCV = str( flask.request.json.get("MaCV") )
+
+        cursor = conn.cursor()
+        sql = ("INSERT INTO NhanVien "
+               "(MaNV, TenNV, GioiTinh, NgaySinh, DienThoai, DiaChi, MaCV) VALUES (?,?,?,?,?,?,?)")
+        data =  (maNV, tenNV, gioiTinh, ngaySinh, dienThoai, diaChi, maCV)
+        cursor.execute(sql, data)
+        conn.commit()
+        resp = flask.jsonify({"mess": "Thêm thành công"})
+        resp.status_code = 200
+        return resp
+    except Exception as e:
+        print('addNhanVien: ', e)
+
+@app.route('/NhanVien/modify', methods = ['PUT'])
+def modifyNhanVien():
+    try:
+        maNV = str( flask.request.json.get("MaNV") )
+        tenNV = str( flask.request.json.get("TenNV") )
+        gioiTinh = str( flask.request.json.get("GioiTinh") )
+        ngaySinh = str( flask.request.json.get("NgaySinh") )
+        dienThoai = str( flask.request.json.get("DienThoai") )
+        diaChi = str( flask.request.json.get("DiaChi") )
+        maCV = str( flask.request.json.get("MaCV") )
+
+        cursor = conn.cursor()
+        sql = ("UPDATE NhanVien SET "
+               "TenNV = ?, GioiTinh = ?, NgaySinh = ?, DienThoai = ?, DiaChi = ?, MaCV = ? "
+               "WHERE MaNV = ?")
+        data =  (tenNV, gioiTinh, ngaySinh, dienThoai, diaChi, maCV, maNV)
+        cursor.execute(sql, data)
+        conn.commit()
+        resp = flask.jsonify({"mess": "Sửa thành công"})
+        resp.status_code = 200
+        return resp
+    except Exception as e:
+        print('modifyNhanVien: ', e)
+
+@app.route('/NhanVien/delete', methods = ['DELETE'])
+def deleteNhanVien():
+    maNV = str(flask.request.json.get('MaNV'))
+    val = {
+        'MaNV': maNV
+    }
+    return delete('NhanVien', val)
+
 
 
 if __name__ == "__main__":
-    print('\n')
-    print(database_directory)
-    print(pyodbc.drivers())
-    app.run()
+    # print('\n')
+    # print(database_directory)
+    # print(pyodbc.drivers())
+    app.run(port=5000)
